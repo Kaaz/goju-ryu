@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOGKF Draaiboek Goju-Ryu Karate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,8 +12,6 @@
             --iogkf-red: #D32F2F;
             --dark-bg: #1a1a1a;
             --medium-bg: #2a2a2a;
-            --light-bg: #f5f5f5;
-            --text-dark: #333;
             --text-light: #f1f1f1;
             --border-color: #444;
             --translation-color: #aaa;
@@ -48,119 +47,154 @@
         header::before {
             content: '';
             position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='%23D32F2F'%3E%3Cpath d='M50,5A45,45 0 1 0 50,95A45,45 0 1 0 50,5M50,0A50,50 0 1 1 50,100A50,50 0 1 1 50,0Z'/%3E%3Cpath d='M50,15A35,35 0 1 0 50,85A35,35 0 1 0 50,15M50,10A40,40 0 1 1 50,90A40,40 0 1 1 50,10Z'/%3E%3C/svg%3E");
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 160px;
+            background-image: url('iogkf-logo.webp');
             background-size: contain;
-            opacity: 0.5;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.9;
         }
         header h1 {
             margin: 0;
             font-size: 3em;
             font-family: 'Yuji Syuku', serif;
         }
-        .tab-container {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            background-color: #111;
-        }
-        .tab-button {
-            background-color: transparent;
-            border: none;
-            border-bottom: 4px solid transparent;
-            outline: none;
-            cursor: pointer;
-            padding: 15px;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-            font-weight: 700;
-            color: var(--text-light);
-            white-space: nowrap;
-        }
-        .tab-button:hover {
-            background-color: var(--medium-bg);
-        }
-        .tab-button.active {
-            color: var(--iogkf-red);
-            border-bottom: 4px solid var(--iogkf-red);
-        }
-        .tab-content {
-            display: none;
-            padding: 30px;
-            animation: fadeIn 0.5s;
-        }
+        
+        .tab-container { display: flex; flex-wrap: nowrap; overflow-x: auto; background-color: #111; -webkit-overflow-scrolling: touch; }
+        .tab-button { background: transparent; border: none; border-bottom: 4px solid transparent; outline: none; cursor: pointer; padding: 15px; transition: all 0.3s ease; font-size: 0.9em; font-weight: 700; color: var(--text-light); white-space: nowrap; }
+        .tab-button:hover { background-color: var(--medium-bg); }
+        .tab-button.active { color: var(--iogkf-red); border-bottom: 4px solid var(--iogkf-red); }
+        .mobile-nav { display: none; padding: 10px; background-color: #111; }
+        .mobile-nav select { width: 100%; padding: 15px; background: var(--medium-bg); color: var(--text-light); border: 1px solid var(--border-color); border-radius: 8px; font-size: 1.1em; font-weight: bold; }
+
+        .tab-content { display: none; padding: 30px; animation: fadeIn 0.5s; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        h3 {
-            font-size: 2.2em;
-            color: var(--text-light);
-            border-bottom: 2px solid var(--iogkf-red);
-            padding-bottom: 10px;
-            margin-top: 0;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .tab-content h4 {
-            font-size: 1.5em;
-            color: var(--iogkf-red);
-            margin-top: 30px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        .tab-content hr { display: none; }
+        
+        h3 { font-size: 2.2em; color: var(--text-light); border-bottom: 2px solid var(--iogkf-red); padding-bottom: 10px; margin: 0 0 30px 0; display: flex; align-items: center; gap: 15px; }
+        .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        h4 { font-size: 1.5em; color: var(--iogkf-red); margin: 30px 0 15px 0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        
         ul { padding-left: 25px; margin: 0; }
         li { margin-bottom: 12px; padding-left: 10px; }
-        .kihon-list { list-style-type: '👊 '; }
-        .kata-list { list-style-type: '📜 '; }
-        .kumite-list { list-style-type: '🥊 '; }
-        .kennis-list { list-style-type: '🧠 '; }
-        .stand-list { list-style-type: '👣 '; }
-        .hojo-list { list-style-type: '🏋️ '; }
+        .kihon-list { list-style-type: '👊 '; } .kata-list { list-style-type: '📜 '; } .kumite-list { list-style-type: '🥊 '; } .kennis-list { list-style-type: '🧠 '; } .stand-list { list-style-type: '👣 '; } .hojo-list { list-style-type: '🏋️ '; }
+        
         .translation { font-style: italic; color: var(--translation-color); font-size: 0.9em; margin-left: 8px; }
         dl dt { font-weight: 700; color: var(--text-light); }
         dl dd { margin-left: 20px; margin-bottom: 10px; padding-left: 15px; border-left: 2px solid var(--iogkf-red); }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
-        th, td { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
-        thead { background-color: #000; color: var(--text-light); font-weight: 700; }
-        .shodan-row { background-color: #424242; font-weight: bold; }
-        .no-content { color: #777; font-style: italic; }
         
-        .belt {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2px 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            font-size: 0.7em;
-            vertical-align: middle;
-            color: var(--text-dark);
-            height: 24px;
+        /* --- VERBETERDE BELT ICON STYLING --- */
+        .belt-icon { 
+            display: inline-block; 
+            position: relative; 
+            width: 70px; 
+            height: 28px; 
+            vertical-align: middle; 
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
-        .belt-white { background-color: #fff; }
-        .belt-yellow { background-color: var(--yellow-belt); }
-        .belt-green { background-color: var(--green-belt); color: var(--text-light); }
-        .belt-brown { background-color: var(--brown-belt); color: var(--text-light); }
-        .belt-black { background-color: var(--black-belt); color: var(--text-light); }
-        .stripe {
-            color: var(--black-belt);
-            font-weight: bold;
-            font-size: 1.2em;
-            line-height: 1;
-            margin: 0 1px;
+        .belt-icon .main { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 5px; 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 4px; 
+            position: relative; 
+            z-index: 1;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), inset 0 -1px 2px rgba(255,255,255,0.1);
+        }
+        
+        /* Knot verwijderd - geen visuele knoop meer */
+        .belt-icon .knot { display: none; }
+        
+        /* White belt - met subtiele gradiënt */
+        .belt-white .main { 
+            background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 50%, #e8e8e8 100%);
+            border: 1px solid #ddd;
+        }
+        
+        /* Yellow belt - levendige gele tint */
+        .belt-yellow .main { 
+            background: linear-gradient(180deg, #FFE082 0%, var(--yellow-belt) 50%, #F9A825 100%);
+            border: 1px solid #F9A825;
+        }
+        
+        /* Green belt - natuurlijke groene tint */
+        .belt-green .main { 
+            background: linear-gradient(180deg, #66BB6A 0%, var(--green-belt) 50%, #2E7D32 100%);
+            border: 1px solid #2E7D32;
+        }
+        
+        /* Brown belt - warme bruine tint */
+        .belt-brown .main { 
+            background: linear-gradient(180deg, #8D6E63 0%, var(--brown-belt) 50%, #4E342E 100%);
+            border: 1px solid #4E342E;
+        }
+        
+        /* Black belt - diepe zwarte tint */
+        .belt-black .main { 
+            background: linear-gradient(180deg, #424242 0%, var(--black-belt) 50%, #000000 100%);
+            border: 1px solid #000;
+        }
+        
+        /* Stripe styling - zwarte tape */
+        .belt-icon .stripe { 
+            height: 70%; 
+            width: 3px; 
+            border-radius: 1px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            box-shadow: 
+                0 1px 2px rgba(0,0,0,0.5), 
+                inset 0 1px 1px rgba(255,255,255,0.1);
+            position: relative;
+        }
+        .belt-icon .stripe::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 50%, transparent 100%);
+            border-radius: 1px;
         }
 
-        @media print {
-            body { margin: 20px; background-color: white; color: black; }
-            .container { box-shadow: none; border-radius: 0; }
+        .desktop-overview { display: table; width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .desktop-overview thead { background-color: #000; color: var(--text-light); font-weight: 700; }
+        .desktop-overview th, .desktop-overview td { border: 1px solid var(--border-color); padding: 12px; text-align: left; }
+        .shodan-row { background-color: #424242; font-weight: bold; }
+        .mobile-overview { display: none; }
+        .no-content { color: #777; font-style: italic; }
+
+        footer { text-align: center; padding: 25px 30px; margin-top: 20px; border-top: 1px solid var(--border-color); font-size: 0.9em; color: var(--translation-color); }
+        footer a { color: var(--text-light); text-decoration: none; font-weight: 700; transition: color 0.3s ease; }
+        footer a:hover { color: var(--iogkf-red); text-decoration: underline; }
+
+        @media screen and (max-width: 900px) {
+            .container { margin: 0; border-radius: 0; border-left: none; border-right: none; }
+            header { padding: 20px 15px; }
+            header h1 { font-size: 2em; }
+            header::before {top: 50%;left:-6%; width: 140px; height: 140px; }
+            
             .tab-container { display: none; }
-            .tab-content { display: block !important; page-break-before: always; animation: none; }
-            header { background-color: #fff !important; color: #000 !important; border-bottom: 2px solid #000; }
+            .mobile-nav { display: block; }
+            
+            .tab-content { padding: 20px; }
+            h3 { font-size: 1.8em; gap: 10px; }
+            .grid-container { grid-template-columns: 1fr; gap: 30px; }
+            
+            .desktop-overview { display: none; }
+            .mobile-overview { display: block; }
+            .rank-card { background: var(--medium-bg); border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 15px; padding: 15px; }
+            .rank-card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 10px; }
+            .rank-card-header h4 { margin: 0; color: var(--text-light); font-size: 1.2em; border: none; padding: 0; }
+            .rank-card dl { margin: 0; }
+            .rank-card dt { color: var(--iogkf-red); font-weight: bold; font-size: 0.9em; }
+            .rank-card dd { margin: 0 0 10px 0; font-size: 1em; }
         }
     </style>
 </head>
@@ -185,62 +219,151 @@
         <button class="tab-button" onclick="openTab(event, 'shodan')">1e Dan</button>
         <button class="tab-button" onclick="openTab(event, 'lexicon')">Lexicon</button>
     </div>
-
-    <!-- Overzicht Content -->
+    <div class="mobile-nav">
+        <select id="mobile-tabs" onchange="openTabFromSelect(this)">
+            <option value="overzicht">Overzicht</option>
+            <option value="starter">Starter</option>
+            <option value="10kyu">10e Kyu</option>
+            <option value="9kyu">9e Kyu</option>
+            <option value="8kyu">8e Kyu</option>
+            <option value="7kyu">7e Kyu</option>
+            <option value="6kyu">6e Kyu</option>
+            <option value="5kyu">5e Kyu</option>
+            <option value="4kyu">4e Kyu</option>
+            <option value="3kyu">3e Kyu</option>
+            <option value="2kyu">2e Kyu</option>
+            <option value="1kyu">1e Kyu</option>
+            <option value="shodan">1e Dan</option>
+            <option value="lexicon">Lexicon</option>
+        </select>
+    </div>
+    
     <div id="overzicht" class="tab-content" style="display:block;">
         <h3>Kata & Bunkai Progressiepad</h3>
-        <table>
+        <table class="desktop-overview">
             <thead><tr><th>Graad</th><th>Band</th><th>Nieuwe Kata (Sequence)</th><th>Kata Verfijnen (Good Form)</th><th>Nieuwe Bunkai</th></tr></thead>
             <tbody>
-                <tr><td>Starter</td><td><span class="belt belt-white"></span></td><td class="no-content" colspan="3">Focus op basistechnieken.</td></tr>
-                <tr><td>10e Kyu</td><td><span class="belt belt-white"><span class="stripe">|</span></span></td><td class="no-content">---</td><td class="no-content">---</td><td class="no-content">---</td></tr>
-                <tr><td>9e Kyu</td><td><span class="belt belt-white"><span class="stripe">||</span></span></td><td>Gekisai Dai Ichi</td><td class="no-content">---</td><td class="no-content">---</td></tr>
-                <tr><td>8e Kyu</td><td><span class="belt belt-white"><span class="stripe">|||</span></span></td><td>Gekisai Dai Ni</td><td>Gekisai Dai Ichi</td><td class="no-content">---</td></tr>
-                <tr><td>7e Kyu</td><td><span class="belt belt-yellow"></span></td><td>Sanchin</td><td>Gekisai Dai Ni</td><td>Bunkai: Gekisai Dai Ichi</td></tr>
-                <tr><td>6e Kyu</td><td><span class="belt belt-yellow"><span class="stripe">|</span></span></td><td>Saifa</td><td class="no-content">---</td><td>Bunkai: Gekisai Dai Ni</td></tr>
-                <tr><td>5e Kyu</td><td><span class="belt belt-green"></span></td><td class="no-content">---</td><td>Saifa & Sanchin</td><td>Bunkai: Saifa</td></tr>
-                <tr><td>4e Kyu</td><td><span class="belt belt-green"><span class="stripe">|</span></span></td><td>Seiyunchin</td><td class="no-content">---</td><td>Renzoku Bunkai: Gekisai Dai Ichi</td></tr>
-                <tr><td>3e Kyu</td><td><span class="belt belt-brown"></span></td><td class="no-content">---</td><td>Seiyunchin</td><td>Bunkai: Seiyunchin (Deel 1)</td></tr>
-                <tr><td>2e Kyu</td><td><span class="belt belt-brown"><span class="stripe">|</span></span></td><td>Shisochin</td><td class="no-content">---</td><td>Bunkai: Seiyunchin (Deel 2)</td></tr>
-                <tr><td>1e Kyu</td><td><span class="belt belt-brown"><span class="stripe">||</span></span></td><td class="no-content">---</td><td>Shisochin</td><td class="no-content">---</td></tr>
-                <tr class="shodan-row"><td>1e Dan</td><td><span class="belt belt-black"></span></td><td>(Beheersing)</td><td>(Alle kata's)</td><td>Bunkai: Shisochin</td></tr>
+                <tr><td>Starter</td><td><div class="belt-icon belt-white"><div class="main"></div><div class="knot"></div></div></td><td class="no-content" colspan="3">Focus op basistechnieken.</td></tr>
+                <tr><td>10e Kyu</td><td><div class="belt-icon belt-white"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></td><td class="no-content">---</td><td class="no-content">---</td><td class="no-content">---</td></tr>
+                <tr><td>9e Kyu</td><td><div class="belt-icon belt-white"><div class="main"><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></td><td>Gekisai Dai Ichi</td><td class="no-content">---</td><td class="no-content">---</td></tr>
+                <tr><td>8e Kyu</td><td><div class="belt-icon belt-white"><div class="main"><span class="stripe"></span><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></td><td>Gekisai Dai Ni</td><td>Gekisai Dai Ichi</td><td class="no-content">---</td></tr>
+                <tr><td>7e Kyu</td><td><div class="belt-icon belt-yellow"><div class="main"></div><div class="knot"></div></div></td><td>Sanchin</td><td>Gekisai Dai Ni</td><td>Bunkai: Gekisai Dai Ichi</td></tr>
+                <tr><td>6e Kyu</td><td><div class="belt-icon belt-yellow"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></td><td>Saifa</td><td class="no-content">---</td><td>Bunkai: Gekisai Dai Ni</td></tr>
+                <tr><td>5e Kyu</td><td><div class="belt-icon belt-green"><div class="main"></div><div class="knot"></div></div></td><td class="no-content">---</td><td>Saifa & Sanchin</td><td>Bunkai: Saifa</td></tr>
+                <tr><td>4e Kyu</td><td><div class="belt-icon belt-green"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></td><td>Seiyunchin</td><td class="no-content">---</td><td>Renzoku Bunkai: Gekisai Dai Ichi</td></tr>
+                <tr><td>3e Kyu</td><td><div class="belt-icon belt-brown"><div class="main"></div><div class="knot"></div></div></td><td class="no-content">---</td><td>Seiyunchin</td><td>Bunkai: Seiyunchin (Deel 1)</td></tr>
+                <tr><td>2e Kyu</td><td><div class="belt-icon belt-brown"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></td><td>Shisochin</td><td class="no-content">---</td><td>Bunkai: Seiyunchin (Deel 2)</td></tr>
+                <tr><td>1e Kyu</td><td><div class="belt-icon belt-brown"><div class="main"><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></td><td class="no-content">---</td><td>Shisochin</td><td class="no-content">---</td></tr>
+                <tr class="shodan-row"><td>1e Dan</td><td><div class="belt-icon belt-black"><div class="main"></div><div class="knot"></div></div></td><td>(Beheersing)</td><td>(Alle kata's)</td><td>Bunkai: Shisochin</td></tr>
             </tbody>
         </table>
+        <div class="mobile-overview">
+            <script>
+                const ranks = [
+                    { g: 'Starter', b: 'white', s: 0, nk: 'Focus op basis', kv: '', nb: ''},
+                    { g: '10e Kyu', b: 'white', s: 1, nk: '---', kv: '---', nb: '---'},
+                    { g: '9e Kyu', b: 'white', s: 2, nk: 'Gekisai Dai Ichi', kv: '---', nb: '---'},
+                    { g: '8e Kyu', b: 'white', s: 3, nk: 'Gekisai Dai Ni', kv: 'Gekisai Dai Ichi', nb: '---'},
+                    { g: '7e Kyu', b: 'yellow', s: 0, nk: 'Sanchin', kv: 'Gekisai Dai Ni', nb: 'Bunkai: Gekisai Dai Ichi'},
+                    { g: '6e Kyu', b: 'yellow', s: 1, nk: 'Saifa', kv: '---', nb: 'Bunkai: Gekisai Dai Ni'},
+                    { g: '5e Kyu', b: 'green', s: 0, nk: '---', kv: 'Saifa & Sanchin', nb: 'Bunkai: Saifa'},
+                    { g: '4e Kyu', b: 'green', s: 1, nk: 'Seiyunchin', kv: '---', nb: 'Renzoku Bunkai: Gekisai Dai Ichi'},
+                    { g: '3e Kyu', b: 'brown', s: 0, nk: '---', kv: 'Seiyunchin', nb: 'Bunkai: Seiyunchin (Deel 1)'},
+                    { g: '2e Kyu', b: 'brown', s: 1, nk: 'Shisochin', kv: '---', nb: 'Bunkai: Seiyunchin (Deel 2)'},
+                    { g: '1e Kyu', b: 'brown', s: 2, nk: '---', kv: 'Shisochin', nb: '---'},
+                    { g: '1e Dan', b: 'black', s: 0, nk: '(Beheersing)', kv: '(Alle kata\'s)', nb: 'Bunkai: Shisochin'},
+                ];
+                ranks.forEach(r => {
+                    let stripes = '';
+                    for (let i = 0; i < r.s; i++) { stripes += '<span class="stripe"></span>'; }
+                    document.write(`
+                        <div class="rank-card">
+                            <div class="rank-card-header">
+                                <h4>${r.g}</h4>
+                                <div class="belt-icon belt-${r.b}"><div class="main">${stripes}</div><div class="knot"></div></div>
+                            </div>
+                            <dl>
+                                <dt>Nieuwe Kata</dt><dd>${r.nk}</dd>
+                                <dt>Kata Verfijnen</dt><dd>${r.kv}</dd>
+                                <dt>Nieuwe Bunkai</dt><dd>${r.nb}</dd>
+                            </dl>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
     </div>
-
-    <!-- Starter Content -->
-    <div id="starter" class="tab-content"><h3>Starter <span class="belt belt-white"></span></h3><p>De eerste stap op je karate-pad. De focus ligt op het aanleren van de dojo-etiquette, de basisstanden en de meest fundamentele technieken.</p></div>
     
-    <!-- All Kyu, Dan, and Lexicon content divs follow here... -->
-    <div id="10kyu" class="tab-content"><h3>10e Kyu <span class="belt belt-white"><span class="stripe">|</span></span></h3><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Jodan Age Uke <span class="translation">(Hoge stijgende blokkering)</span></li><li>Chudan (Soto) Yoko Uke <span class="translation">(Midden zijblokkering)</span></li><li>Gedan Harai Uke <span class="translation">(Lage veegblokkering)</span></li><li>Seiken Zuki <span class="translation">(Correcte vuiststoot)</span></li><li>Mae Geri <span class="translation">(Voorwaartse trap)</span></li><li>Mawashi Geri <span class="translation">(Circulaire trap)</span></li></ul><h4>Tachi Kata <span class="translation">(Standen)</span></h4><ul class="stand-list"><li>Musubi Dachi <span class="translation">(Open voet stand)</span></li><li>Heiko Dachi <span class="translation">(Parallelle stand)</span></li><li>Zenkutsu Dachi <span class="translation">(Voorwaartse stand)</span></li></ul><h4>Algemene Kennis</h4><ul class="kennis-list"><li>Onegai shimasu <span class="translation">(Alstublieft, leer het mij)</span> / Arigato gozaimashita <span class="translation">(Dank u wel)</span></li><li>Sensei <span class="translation">(Leraar)</span> / Senpai <span class="translation">(Senior student)</span> / Kohai <span class="translation">(Junior student)</span></li><li>Karate <span class="translation">(Lege hand)</span> / Dojo <span class="translation">(School)</span> / Gi <span class="translation">(Uniform)</span> / Obi <span class="translation">(Band)</span></li><li>Jodan <span class="translation">(Hoog)</span> / Chudan <span class="translation">(Midden)</span> / Gedan <span class="translation">(Laag)</span></li></ul></div>
-    <div id="9kyu" class="tab-content"><h3>9e Kyu <span class="belt belt-white"><span class="stripe">||</span></span></h3><h4>Kata & Kumite</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ichi <span class="translation">(Volgorde leren)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Basis blokkeringen met partner</li></ul><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Uraken Uchi <span class="translation">(Rugvuistslag)</span></li><li>Shuto Uchi <span class="translation">(Meshandslag)</span></li><li>Age Hiji Ate <span class="translation">(Opwaartse elleboogstoot)</span></li><li>Nami Gaeshi <span class="translation">(Voetveeg & stamp)</span></li></ul><h4>Tachi Kata & Ido</h4><ul class="stand-list"><li>Shiko Dachi <span class="translation">(Sumo-stand)</span></li><li>Han Zenkutsu Dachi <span class="translation">(Halve voorwaartse stand)</span></li><li><strong>Ido:</strong> Oi Zuki <span class="translation">(Lunge punch)</span> / Gyaku Zuki <span class="translation">(Reverse punch)</span></li></ul><h4>Algemene Kennis</h4><ul class="kennis-list"><li>Shugo <span class="translation">(Opstellen)</span> / Hajime <span class="translation">(Begin)</span> / Yame <span class="translation">(Stop)</span> / Yoi <span class="translation">(Klaar)</span> / Kamae <span class="translation">(Vechthouding)</span></li><li>Semete <span class="translation">(Aanvaller)</span> / Ukete <span class="translation">(Verdediger)</span></li><li><strong>Historie:</strong> Karate is in Okinawa ontwikkeld nadat een wapenverbod werd ingesteld.</li></ul></div>
-    <div id="8kyu" class="tab-content"><h3>8e Kyu <span class="belt belt-white"><span class="stripe">|||</span></span></h3><h4>Kata & Kumite</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ichi <span class="translation">(In detail, met goede vorm)</span></li><li><strong>Kata:</strong> Gekisai Dai Ni <span class="translation">(Volgorde leren)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kihon Ippon Kumite <span class="translation">(Basis 1-staps sparring op hoog, midden, laag niveau)</span></li></ul><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Chudan Ura Zuki <span class="translation">(Korte middenstoot)</span></li><li>Jodan Age Zuki <span class="translation">(Opstoot)</span></li><li>Sanbon Zuki <span class="translation">(Drievoudige stoot)</span></li><li>Hiza Geri <span class="translation">(Kniestoot)</span></li><li>Chudan Hiki Uke <span class="translation">(Trekkende blokkering)</span></li></ul><h4>Tachi Kata & Hojo Undo</h4><ul class="stand-list"><li><strong>Stand:</strong> Neko Ashi Dachi <span class="translation">(Kat-stand)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Ukemi <span class="translation">(Valbreekoefeningen)</span></li></ul><h4>Algemene Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>IOGKF:</strong><span class="translation">International Okinawan Goju-Ryu Karate-Do Federation</span></li><li><strong>Kenkon:</strong><span class="translation">Het symbool van Goju-Ryu, stelt Hemel (hard) en Aarde (zacht) voor.</span></li><li><strong>Mon:</strong><span class="translation">Het familiewapen van de Miyagi-familie, het officiële IOGKF-logo.</span></li><li><strong>Geschiedenis:</strong> De lijn van meesters: Ryu Ryu Ko -> Kanryo Higaonna -> Chojun Miyagi.</li></ul></div>
-    <div id="7kyu" class="tab-content"><h3>7e Kyu <span class="belt belt-yellow"></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ni <span class="translation">(In detail, met goede vorm)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Volgorde leren)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ichi <span class="translation">(Toepassing van de kata)</span></li></ul><h4>Kumite</h4><ul class="kumite-list"><li>Sandan Gi</li><li>Kakie <span class="translation">(Klevende handen - basis)</span></li><li>Ippon Kumite <span class="translation">(Vervolg combinaties)</span></li><li>Ude Tanren <span class="translation">(Arm conditionering)</span></li></ul><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Kizami Zuki <span class="translation">(Jab)</span></li><li>Yoko Geri <span class="translation">(Zijwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Sanchin Dachi <span class="translation">(Zandloper-stand)</span></li></ul><h4>Algemene Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Doel:</strong> Het hoofddoel van training is de fysieke, mentale en spirituele verbetering van jezelf.</li><li><strong>Termen:</strong> Seiza <span class="translation">(geknielde zit)</span>, Mokuso <span class="translation">(meditatie)</span></li><li><strong>Geschiedenis:</strong> De IOGKF is in 1979 opgericht door Morio Higaonna, een leerling van Anichi Miyagi.</li></ul></div>
-    <div id="6kyu" class="tab-content"><h3>6e Kyu <span class="belt belt-yellow"><span class="stripe">|</span></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Saifa <span class="translation">(Volgorde leren)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ni <span class="translation">(Toepassing van de kata)</span></li></ul><h4>Kumite</h4><ul class="kumite-list"><li>Hachiji Sabaki <span class="translation">(Voetenwerk oefening)</span></li><li>Kakie met Suri Ashi <span class="translation">(schuifpas)</span> en balansverstoring</li><li>Irikumi Ju <span class="translation">(Zacht sparren)</span></li></ul><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Tateken Zuki <span class="translation">(Verticale vuiststoot)</span></li><li>Haito Uchi <span class="translation">(Binnenkant meshandslag)</span></li><li>Ushiro Geri <span class="translation">(Achterwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Sagi Ashi Dachi <span class="translation">(Ooievaarsstand)</span></li></ul><h4>Algemene Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Kime <span class="translation">(focus)</span>, Budo <span class="translation">(weg v/d krijger)</span>, Do <span class="translation">(de weg)</span>, Yudansha <span class="translation">(zwarte bander)</span>, Mudansha <span class="translation">(geen zwarte bander)</span></li><li><strong>Geschiedenis:</strong> De 4 grote Japanse stijlen zijn Goju-Ryu, Shotokan, Wado-Ryu, en Shito-Ryu.</li><li><strong>Geschiedenis:</strong> Jin’an Shinzato was de beoogd opvolger van Miyagi, maar stierf in WOII.</li></ul></div>
-    <div id="5kyu" class="tab-content"><h3>5e Kyu <span class="belt belt-green"></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Saifa <span class="translation">(Goede vorm)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Goede vorm)</span></li><li><strong>Bunkai:</strong> Saifa <span class="translation">(Toepassing van de kata)</span></li></ul><h4>Kumite & Kihon Waza</h4><ul class="kihon-list"><li>Mawashi Hiji Ate <span class="translation">(Circulaire elleboogstoot)</span></li><li>Ushiro Hiji Ate <span class="translation">(Achterwaartse elleboogstoot)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kakie - Kote Gaeshi <span class="translation">(Pols worp)</span></li><li><strong>Kumite:</strong> Dij- en buik-conditionering</li></ul><h4>Hojo Undo & Kennis</h4><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Chiishi <span class="translation">(Krachtsteen)</span> en Neko Undo <span class="translation">(Kat-oefening)</span></li></ul><ul class="kennis-list"><li><strong>Kennis:</strong> De Dojo Kun in het Japans kunnen opzeggen en begrijpen.</li><li><strong>Doel IOGKF:</strong> Het behouden van traditioneel Goju-Ryu voor toekomstige generaties.</li><li><strong>Geschiedenis:</strong> De 3 originele Okinwaanse stijlen zijn Naha-te, Shuri-te, en Tomari-te.</li></ul></div>
-    <div id="4kyu" class="tab-content"><h3>4e Kyu <span class="belt belt-green"><span class="stripe">|</span></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Seiyunchin <span class="translation">(Volgorde leren)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ichi Renzoku Bunkai <span class="translation">(Doorlopende toepassing)</span></li></ul><h4>Kumite & Hojo Undo</h4><ul class="kumite-list"><li>Uitgebreide Kakie-oefeningen met diverse technieken</li><li>Schouder- en rug-conditionering</li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Gevorderde Chiishi en Nigiri Game <span class="translation">(grijppotten)</span> oefeningen</li></ul><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Shotei Zuki <span class="translation">(Palm-hiel stoot)</span></li><li>Tobi Mae Geri <span class="translation">(Springende voorwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Bensoku Dachi <span class="translation">(Gekruiste stand)</span> en Renoji Dachi <span class="translation">(L-vormige stand)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Junbi Undo <span class="translation">(warming-up)</span>, Zanshin <span class="translation">(alertheid)</span>, Gyaku Waza <span class="translation">(grijpen)</span>, Nage Waza <span class="translation">(werpen)</span></li><li><strong>Geschiedenis:</strong> Chojun Miyagi creëerde de Gekisai kata's om karate toegankelijker te maken voor jongeren.</li><li><strong>Geschiedenis:</strong> De naam "Goju-Ryu" is afkomstig uit een gedicht uit het Bubishi.</li></ul></div>
-    <div id="3kyu" class="tab-content"><h3>3e Kyu <span class="belt belt-brown"></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Seiyunchin <span class="translation">(Goede vorm)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Goede vorm & ademhaling)</span></li><li><strong>Bunkai:</strong> Seiyunchin <span class="translation">(Eerste 6 toepassingen)</span></li></ul><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Nukite Zuki <span class="translation">(Speerhand stoot)</span></li><li>Furi Zuki <span class="translation">(Zwaai stoot)</span></li><li>Kaiten Ushiro Geri <span class="translation">(Draaiende achterwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Heisoku Dachi <span class="translation">(Gesloten voeten stand)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Renzoku <span class="translation">(doorlopend)</span>, Kenpo Hakku <span class="translation">(8 wetten v/d vuist)</span>, Shihan <span class="translation">(grootmeester)</span>, Bubishi <span class="translation">(karate-bijbel)</span></li><li><strong>Kennis:</strong> Er zijn 12 officiële kata's in Goju-Ryu.</li><li><strong>Geschiedenis:</strong> De eerste leraar van Chojun Miyagi was Ryuko Aragaki.</li></ul></div>
-    <div id="2kyu" class="tab-content"><h3>2e Kyu <span class="belt belt-brown"><span class="stripe">|</span></span></h3><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Shisochin <span class="translation">(Volgorde leren)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Als een 'goede' kata, meesterschap)</span></li><li><strong>Bunkai:</strong> Seiyunchin <span class="translation">(Laatste 6 toepassingen)</span></li></ul><h4>Kihon Waza & Kumite</h4><ul class="kihon-list"><li>Kagi Zuki <span class="translation">(Haak stoot)</span></li><li>Kansetsu Geri <span class="translation">(Gewrichtstrap)</span></li><li>Jodan Ko Uke <span class="translation">(Polsblokkering)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kakie met Hiji Tori <span class="translation">(elleboogklem uit Shisochin)</span></li></ul><h4>Hojo Undo & Kennis</h4><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Kongo Ken <span class="translation">(zwaar ijzeren ovaal voor krachttraining)</span></li></ul><ul class="kennis-list"><li><strong>Termen:</strong> Kaishu Gata <span class="translation">(open hand kata)</span> vs. Heishu Gata <span class="translation">(gesloten hand kata)</span></li><li><strong>Geschiedenis:</strong> Chojun Miyagi creëerde de Tensho kata gebaseerd op de Chinese Rokkishu-vorm.</li><li><strong>Geschiedenis:</strong> De bijnaam van Kanryo Higaonna was "Ashi no Higaonna" <span class="translation">(Higaonna de Benen)</span> vanwege zijn superieure traptechnieken.</li></ul></div>
-    <div id="1kyu" class="tab-content"><h3>1e Kyu <span class="belt belt-brown"><span class="stripe">||</span></span></h3><h4>Kata & Kihon Waza</h4><ul class="kata-list"><li><strong>Kata:</strong> Shisochin <span class="translation">(Goede vorm)</span></li></ul><ul class="kihon-list"><li>Jodan Haishu Age Uke <span class="translation">(Hoge rughand-blokkering)</span></li><li>Chudan Haishu Otoshi Uke <span class="translation">(Midden rughand-blokkering)</span></li></ul><h4>Kumite & Hojo Undo</h4><ul class="kumite-list"><li><strong>Kumite:</strong> Niohn Kumite <span class="translation">(sparren tegen twee aanvallen)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Kongo Ken <span class="translation">(partneroefeningen)</span></li><li><strong>Hojo Undo:</strong> Ishi Sashi <span class="translation">(stenen hangsloten voor gripkracht)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Uchi Deshi <span class="translation">(interne, inwonende leerling)</span>, Unsoku Ho <span class="translation">(voetenwerk methodes)</span></li><li><strong>Kennis:</strong> De Japanse benamingen voor de delen van de voet <span class="translation">(Josokutei, Kakato, etc.)</span></li><li><strong>Geschiedenis:</strong> De bijnaam van Chojun Miyagi als kind was "Machu".</li><li><strong>Geschiedenis:</strong> Miyagi introduceerde de Kongo Ken na een reis naar Hawaii.</li></ul></div>
-    <div id="shodan" class="tab-content"><h3>1e Dan <span class="belt belt-black"></span></h3><h4>Bunkai & Kumite</h4><ul class="kata-list"><li><strong>Bunkai:</strong> Shisochin <span class="translation">(Volledige toepassing)</span></li></ul><ul class="kumite-list"><li>Jiyu Ippon Kumite <span class="translation">(Vrije 1-staps sparring)</span></li><li>Gevorderde Kakie-toepassingen gebaseerd op Gekisai Dai Ichi & Ni</li><li>Gevorderde klem- en worptechnieken <span class="translation">(Ude Garami, Ashi Garami)</span></li></ul><h4>Hojo Undo & Unsoku Ho</h4><ul class="stand-list"><li><strong>Unsoku Ho:</strong> Neko Ashi Dachi Shiho Sabaki <span class="translation">(4-richtingen voetenwerk in kat-stand)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Nigiri Game <span class="translation">(grijp-potten)</span> in Shiko & Neko Ashi Dachi</li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Kennis:</strong> De Japanse benamingen voor de belangrijkste lichaamsdelen.</li><li><strong>Geschiedenis:</strong> In 1926 richtte Chojun Miyagi de 'Karate Kenkyu Club' op om karate te behouden en te verheffen tot het niveau van Judo en Kendo.</li></ul></div>
-    <div id="lexicon" class="tab-content"><h3>Lexicon - Japanse Terminologie</h3><div class="grid-container"><div class="grid-item"><h4>Algemene Termen & Dojo</h4><dl><dt>Arigato Gozaimashita</dt><dd>Dank u wel (na de les)</dd><dt>Budo</dt><dd>De weg van de krijger</dd><dt>Bubishi</dt><dd>Een oud Chinees boek, de 'bijbel' van karate</dd><dt>Dan</dt><dd>Graad voor zwarte band</dd><dt>Do</dt><dd>De weg, het pad</dd><dt>Dojo</dt><dd>Trainingsschool</dd><dt>Dojo Kun</dt><dd>De regels van de dojo</dd><dt>Gasshuku</dt><dd>Trainingskamp</dd><dt>Gi / Dogi</dt><dd>Karatepak</dd><dt>Honbu</dt><dd>Hoofdkwartier</dd><dt>Karate</dt><dd>Lege hand</dd><dt>Karate-ka</dt><dd>Beoefenaar van karate</dd><dt>Kohai</dt><dd>Junior student</dd><dt>Kyu</dt><dd>Graad voor gekleurde band</dd><dt>Mudansha</dt><dd>Iemand zonder zwarte band</dd><dt>Obi</dt><dd>Band</dd><dt>Onegai Shimasu</dt><dd>Alstublieft, leer het mij (voor de les)</dd><dt>Reigi / Reishiki</dt><dd>Etiquette</dd><dt>Ryu</dt><dd>Stijl of school</dd><dt>Sayonara</dt><dd>Tot ziens</dd><dt>Senpai</dt><dd>Senior student</dd><dt>Sensei</dt><dd>Leraar</dd><dt>Shihan</dt><dd>Grootmeester</dd><dt>Uchi Deshi</dt><dd>Interne, inwonende student</dd><dt>Yudansha</dt><dd>Iemand met een zwarte band</dd></dl></div><div class="grid-item"><h4>Commando's & Richtingen</h4><dl><dt>Ashi Kaete</dt><dd>Wissel van been/stand</dd><dt>Gorei Nashi</dt><dd>Zonder tellen</dd><dt>Hajime</dt><dd>Begin</dd><dt>Hidari</dt><dd>Links</dd><dt>Kamae</dt><dd>Vechthouding</dd><dt>Mae</dt><dd>Voorwaarts</dd><dt>Mawatte</dt><dd>Draai om</dd><dt>Migi</dt><dd>Rechts</dd><dt>Mokuso</dt><dd>Meditatie</dd><dt>Moichido</dt><dd>Nog een keer</dd><dt>Naname</dt><dd>Diagonaal</dd><dt>Ritsu Rei / Za Rei</dt><dd>Staande / zittende buiging</dd><dt>Seiza</dt><dd>Formele geknielde zithouding</dd><dt>Shugo</dt><dd>Opstellen, verzamelen</dd><dt>Ushiro</dt><dd>Achterwaarts</dd><dt>Yame</dt><dd>Stop</dd><dt>Yoi</dt><dd>Wees klaar</dd><dt>Yoko</dt><dd>Zijwaarts</dd></dl></div><div class="grid-item"><h4>Technieken (Waza)</h4><dl><dt>Geri / Keri</dt><dd>Trap</dd><dt>Gyaku Waza</dt><dd>Greptechnieken</dd><dt>Hazushi Waza</dt><dd>Ontsnappingstechnieken</dd><dt>Kihon</dt><dd>Basistechniek</dd><dt>Nage Waza</dt><dd>Worptechnieken</dd><dt>Ne Waza</dt><dd>Grondtechnieken</dd><dt>Uchi</dt><dd>Slag</dd><dt>Uke</dt><dd>Blokkering</dd><dt>Waza</dt><dd>Techniek</dd><dt>Zuki / Tsuki</dt><dd>Stoot</dd></dl></div><div class="grid-item"><h4>Concepten & Filosofie</h4><dl><dt>Bunkai</dt><dd>Analyse, toepassing van kata</dd><dt>Chiru no Chan Chan</dt><dd>Snel samentrekken/ontspannen van spieren</dd><dt>Chin Kuchi Kakin</dt><dd>Spier- en gewrichtsvergrendeling</dd><dt>Heijo Shin / Fudo Shin</dt><dd>Kalme / onverstoorbare geest</dd><dt>Hoshin</dt><dd>Zelfbescherming</dd><dt>Irikumi</dt><dd>Vechten op korte afstand</dd><dt>Kaishu / Heishu Gata</dt><dd>Open / gesloten hand kata</dd><dt>Kenpo Hakku</dt><dd>De 8 wetten van de vuist (uit Bubishi)</dd><dt>Kiai</dt><dd>Krachtige schreeuw, focus van energie</dd><dt>Kime</dt><dd>Focus van kracht op het moment van impact</dd><dt>Muchimi</dt><dd>"Kleverige" energie, zwaar en verbonden</dd><dt>Renzoku</dt><dd>Doorlopend, ononderbroken</dd><dt>Sabaki / Tai Sabaki</dt><dd>Lichaamsverplaatsing, ontwijken</dd><dt>Shime</dt><dd>Testen van Sanchin kata</dd><dt>Zanshin</dt><dd>Blijvende alertheid, ook na een techniek</dd></dl></div></div>
+    <div id="starter" class="tab-content"><h3>Starter <div class="belt-icon belt-white"><div class="main"></div><div class="knot"></div></div></h3><p>De eerste stap op je karate-pad. De focus ligt op het aanleren van de dojo-etiquette, de basisstanden en de meest fundamentele technieken.</p></div>
+    <div id="10kyu" class="tab-content"><h3>10e Kyu <div class="belt-icon belt-white"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Jodan Age Uke <span class="translation">(Hoge stijgende blokkering)</span></li><li>Chudan (Soto) Yoko Uke <span class="translation">(Midden zijblokkering)</span></li><li>Gedan Harai Uke <span class="translation">(Lage veegblokkering)</span></li><li>Seiken Zuki <span class="translation">(Correcte vuiststoot)</span></li><li>Mae Geri <span class="translation">(Voorwaartse trap)</span></li><li>Mawashi Geri <span class="translation">(Circulaire trap)</span></li></ul></div><div class="grid-item"><h4>Tachi Kata <span class="translation">(Standen)</span></h4><ul class="stand-list"><li>Musubi Dachi <span class="translation">(Open voet stand)</span></li><li>Heiko Dachi <span class="translation">(Parallelle stand)</span></li><li>Zenkutsu Dachi <span class="translation">(Voorwaartse stand)</span></li></ul><h4>Algemene Kennis</h4><ul class="kennis-list"><li>Onegai shimasu <span class="translation">(Alstublieft, leer het mij)</span> / Arigato gozaimashita <span class="translation">(Dank u wel)</span></li><li>Sensei <span class="translation">(Leraar)</span> / Senpai <span class="translation">(Senior)</span> / Kohai <span class="translation">(Junior)</span></li><li>Karate <span class="translation">(Lege hand)</span> / Dojo <span class="translation">(School)</span> / Gi <span class="translation">(Uniform)</span> / Obi <span class="translation">(Band)</span></li><li>Jodan <span class="translation">(Hoog)</span> / Chudan <span class="translation">(Midden)</span> / Gedan <span class="translation">(Laag)</span></li></ul></div></div></div>
+    <div id="9kyu" class="tab-content"><h3>9e Kyu <div class="belt-icon belt-white"><div class="main"><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Kumite</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ichi <span class="translation">(Volgorde)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Basis blokkeringen met partner</li></ul><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Uraken Uchi <span class="translation">(Rugvuistslag)</span></li><li>Shuto Uchi <span class="translation">(Meshandslag)</span></li><li>Age Hiji Ate <span class="translation">(Opwaartse elleboogstoot)</span></li><li>Nami Gaeshi <span class="translation">(Voetveeg & stamp)</span></li></ul></div><div class="grid-item"><h4>Tachi Kata & Ido</h4><ul class="stand-list"><li>Shiko Dachi <span class="translation">(Sumo-stand)</span></li><li>Han Zenkutsu Dachi <span class="translation">(Halve voorwaartse stand)</span></li><li><strong>Ido:</strong> Oi Zuki <span class="translation">(Lunge punch)</span> / Gyaku Zuki <span class="translation">(Reverse punch)</span></li></ul><h4>Algemene Kennis</h4><ul class="kennis-list"><li>Shugo <span class="translation">(Opstellen)</span> / Hajime <span class="translation">(Begin)</span> / Yame <span class="translation">(Stop)</span> / Yoi <span class="translation">(Klaar)</span> / Kamae <span class="translation">(Vechthouding)</span></li><li>Semete <span class="translation">(Aanvaller)</span> / Ukete <span class="translation">(Verdediger)</span></li><li><strong>Historie:</strong> Ontstaan na wapenverbod in Okinawa.</li></ul></div></div></div>
+    <div id="8kyu" class="tab-content"><h3>8e Kyu <div class="belt-icon belt-white"><div class="main"><span class="stripe"></span><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Kumite</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ichi <span class="translation">(Detail)</span></li><li><strong>Kata:</strong> Gekisai Dai Ni <span class="translation">(Sequence)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kihon Ippon Kumite <span class="translation">(1-staps sparring)</span></li></ul><h4>Kihon Waza <span class="translation">(Basistechnieken)</span></h4><ul class="kihon-list"><li>Chudan Ura Zuki <span class="translation">(Korte middenstoot)</span></li><li>Jodan Age Zuki <span class="translation">(Opstoot)</span></li><li>Sanbon Zuki <span class="translation">(Drievoudige stoot)</span></li><li>Hiza Geri <span class="translation">(Kniestoot)</span></li><li>Chudan Hiki Uke <span class="translation">(Trekkende blokkering)</span></li></ul></div><div class="grid-item"><h4>Tachi Kata & Hojo Undo</h4><ul class="stand-list"><li><strong>Stand:</strong> Neko Ashi Dachi <span class="translation">(Kat-stand)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Ukemi <span class="translation">(Valbreken)</span></li></ul><h4>Algemene Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>IOGKF:</strong><span class="translation">International Okinawan Goju-Ryu Karate-Do Federation</span></li><li><strong>Kenkon:</strong><span class="translation">Symbool van Goju-Ryu (Hemel & Aarde)</span></li><li><strong>Mon:</strong><span class="translation">Officieel IOGKF-logo (familiewapen Miyagi)</span></li><li><strong>Geschiedenis:</strong> De lijn van meesters: Ryu Ryu Ko -> Kanryo Higaonna -> Chojun Miyagi.</li></ul></div></div></div>
+    <div id="7kyu" class="tab-content"><h3>7e Kyu <div class="belt-icon belt-yellow"><div class="main"></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Gekisai Dai Ni <span class="translation">(Detail)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Sequence)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ichi <span class="translation">(Toepassing)</span></li></ul><h4>Kumite</h4><ul class="kumite-list"><li>Kakie <span class="translation">(Klevende handen - basis)</span></li><li>Ude Tanren <span class="translation">(Arm conditionering)</span></li></ul></div><div class="grid-item"><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Kizami Zuki <span class="translation">(Jab)</span></li><li>Yoko Geri <span class="translation">(Zijwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Sanchin Dachi <span class="translation">(Zandloper-stand)</span></li></ul><h4>Algemene Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Doel:</strong> Fysieke, mentale en spirituele verbetering.</li><li><strong>Termen:</strong> Seiza <span class="translation">(geknielde zit)</span>, Mokuso <span class="translation">(meditatie)</span></li><li><strong>Geschiedenis:</strong> IOGKF opgericht in 1979 door Morio Higaonna.</li></ul></div></div></div>
+    <div id="6kyu" class="tab-content"><h3>6e Kyu <div class="belt-icon belt-yellow"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Saifa <span class="translation">(Sequence)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ni <span class="translation">(Toepassing)</span></li></ul><h4>Kumite</h4><ul class="kumite-list"><li>Hachiji Sabaki <span class="translation">(Voetenwerk oefening)</span></li><li>Irikumi Ju <span class="translation">(Zacht sparren)</span></li></ul></div><div class="grid-item"><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Tateken Zuki <span class="translation">(Verticale vuiststoot)</span></li><li>Haito Uchi <span class="translation">(Binnenkant meshandslag)</span></li><li>Ushiro Geri <span class="translation">(Achterwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Sagi Ashi Dachi <span class="translation">(Ooievaarsstand)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Kime, Budo, Do, Yudansha, Mudansha</li><li><strong>Geschiedenis:</strong> 4 grote Japanse stijlen (Goju, Shoto, Wado, Shito)</li><li><strong>Geschiedenis:</strong> Jin'an Shinzato <span class="translation">(beoogd opvolger Miyagi)</span></li></ul></div></div></div>
+    <div id="5kyu" class="tab-content"><h3>5e Kyu <div class="belt-icon belt-green"><div class="main"></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Saifa <span class="translation">(Good Form)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Good Form)</span></li><li><strong>Bunkai:</strong> Saifa <span class="translation">(Toepassing)</span></li></ul><h4>Kumite & Kihon Waza</h4><ul class="kihon-list"><li>Mawashi Hiji Ate <span class="translation">(Circulaire elleboogstoot)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kakie - Kote Gaeshi <span class="translation">(Pols worp)</span></li><li><strong>Kumite:</strong> Dij- en buik-conditionering</li></ul></div><div class="grid-item"><h4>Hojo Undo & Kennis</h4><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Chiishi <span class="translation">(Krachtsteen)</span>, Neko Undo <span class="translation">(Kat-oefening)</span></li></ul><ul class="kennis-list"><li><strong>Kennis:</strong> De Dojo Kun in het Japans.</li><li><strong>Doel IOGKF:</strong> Behouden van traditioneel Goju-Ryu.</li><li><strong>Geschiedenis:</strong> 3 Okinwaanse stijlen (Naha-te, Shuri-te, Tomari-te)</li></ul></div></div></div>
+    <div id="4kyu" class="tab-content"><h3>4e Kyu <div class="belt-icon belt-green"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Seiyunchin <span class="translation">(Sequence)</span></li><li><strong>Bunkai:</strong> Gekisai Dai Ichi Renzoku Bunkai <span class="translation">(Doorlopend)</span></li></ul><h4>Kumite</h4><ul class="kumite-list"><li>Uitgebreide Kakie-oefeningen</li><li>Schouder- en rug-conditionering</li></ul></div><div class="grid-item"><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Shotei Zuki <span class="translation">(Palm-hiel stoot)</span></li><li>Tobi Mae Geri <span class="translation">(Springende voorwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Bensoku Dachi <span class="translation">(Gekruiste stand)</span>, Renoji Dachi <span class="translation">(L-vormige stand)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Junbi Undo, Zanshin, Gyaku/Hazushi/Nage/Ne Waza</li><li><strong>Geschiedenis:</strong> Creaties van Chojun Miyagi (Gekisai, Tensho)</li></ul></div></div></div>
+    <div id="3kyu" class="tab-content"><h3>3e Kyu <div class="belt-icon belt-brown"><div class="main"></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Seiyunchin <span class="translation">(Good Form)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Good form & breathing)</span></li><li><strong>Bunkai:</strong> Seiyunchin <span class="translation">(Eerste 6)</span></li></ul><h4>Kihon Waza & Tachi Kata</h4><ul class="kihon-list"><li>Nukite Zuki <span class="translation">(Speerhand stoot)</span></li><li>Furi Zuki <span class="translation">(Zwaai stoot)</span></li><li>Kaiten Ushiro Geri <span class="translation">(Draaiende achterwaartse trap)</span></li></ul><ul class="stand-list"><li><strong>Stand:</strong> Heisoku Dachi <span class="translation">(Gesloten stand)</span></li></ul></div><div class="grid-item"><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Renzoku <span class="translation">(doorlopend)</span>, Kenpo Hakku <span class="translation">(8 wetten v/d vuist)</span>, Shihan <span class="translation">(grootmeester)</span>, Bubishi <span class="translation">(karate-bijbel)</span></li><li><strong>Kennis:</strong> Er zijn 12 officiële kata's in Goju-Ryu.</li><li><strong>Geschiedenis:</strong> Eerste leraar Miyagi was Ryuko Aragaki.</li></ul></div></div></div>
+    <div id="2kyu" class="tab-content"><h3>2e Kyu <div class="belt-icon belt-brown"><div class="main"><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Bunkai</h4><ul class="kata-list"><li><strong>Kata:</strong> Shisochin <span class="translation">(Sequence)</span></li><li><strong>Kata:</strong> Sanchin <span class="translation">(Good Kata)</span></li><li><strong>Bunkai:</strong> Seiyunchin <span class="translation">(Laatste 6)</span></li></ul><h4>Kihon Waza & Kumite</h4><ul class="kihon-list"><li>Kagi Zuki <span class="translation">(Haak stoot)</span></li><li>Kansetsu Geri <span class="translation">(Gewrichtstrap)</span></li><li>Jodan Ko Uke <span class="translation">(Polsblokkering)</span></li></ul><ul class="kumite-list"><li><strong>Kumite:</strong> Kakie met Hiji Tori <span class="translation">(elleboogklem)</span></li></ul></div><div class="grid-item"><h4>Hojo Undo & Kennis</h4><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Kongo Ken <span class="translation">(zwaar ijzeren ovaal)</span></li></ul><ul class="kennis-list"><li><strong>Termen:</strong> Kaishu/Heishu Gata <span class="translation">(open/gesloten hand kata)</span></li><li><strong>Geschiedenis:</strong> Miyagi creëerde Tensho uit de Rokkishu-vorm.</li><li><strong>Geschiedenis:</strong> Bijnaam Higaonna was "Ashi no Higaonna" <span class="translation">(Higaonna de Benen)</span>.</li></ul></div></div></div>
+    <div id="1kyu" class="tab-content"><h3>1e Kyu <div class="belt-icon belt-brown"><div class="main"><span class="stripe"></span><span class="stripe"></span></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Kata & Kihon Waza</h4><ul class="kata-list"><li><strong>Kata:</strong> Shisochin <span class="translation">(Good Form)</span></li></ul><ul class="kihon-list"><li>Jodan Haishu Age Uke <span class="translation">(Hoge rughand-blokkering)</span></li><li>Chudan Haishu Otoshi Uke <span class="translation">(Midden rughand-blokkering)</span></li></ul><h4>Kumite & Hojo Undo</h4><ul class="kumite-list"><li><strong>Kumite:</strong> Niohn Kumite <span class="translation">(sparren tegen twee aanvallen)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Kongo Ken <span class="translation">(partneroefeningen)</span>, Ishi Sashi <span class="translation">(stenen hangsloten)</span></li></ul></div><div class="grid-item"><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Termen:</strong> Uchi Deshi <span class="translation">(interne leerling)</span>, Unsoku Ho <span class="translation">(voetenwerk)</span></li><li><strong>Kennis:</strong> Delen van de voet <span class="translation">(Josokutei, Kakato, etc.)</span></li><li><strong>Geschiedenis:</strong> Miyagi's bijnaam was "Machu".</li><li><strong>Geschiedenis:</strong> Miyagi introduceerde de Kongo Ken na een reis naar Hawaii.</li></ul></div></div></div>
+    <div id="shodan" class="tab-content"><h3>1e Dan <div class="belt-icon belt-black"><div class="main"></div><div class="knot"></div></div></h3><div class="grid-container"><div class="grid-item"><h4>Bunkai & Kumite</h4><ul class="kata-list"><li><strong>Bunkai:</strong> Shisochin <span class="translation">(Volledige toepassing)</span></li></ul><ul class="kumite-list"><li>Jiyu Ippon Kumite <span class="translation">(Vrije 1-staps sparring)</span></li><li>Gevorderde Kakie-toepassingen</li><li>Gevorderde klem- en worptechnieken <span class="translation">(Ude Garami, Ashi Garami)</span></li></ul></div><div class="grid-item"><h4>Hojo Undo & Unsoku Ho</h4><ul class="stand-list"><li><strong>Unsoku Ho:</strong> Neko Ashi Dachi Shiho Sabaki <span class="translation">(4-richtingen voetenwerk)</span></li></ul><ul class="hojo-list"><li><strong>Hojo Undo:</strong> Nigiri Game <span class="translation">(grijp-potten)</span></li></ul><h4>Kennis & Geschiedenis</h4><ul class="kennis-list"><li><strong>Kennis:</strong> Lichaamsdelen in het Japans.</li><li><strong>Geschiedenis:</strong> Oprichting van de Karate Kenkyu Club in 1926.</li></ul></div></div></div>
+    <div id="lexicon" class="tab-content">
+        <h3>Lexicon - Japanse Terminologie</h3>
+        <div class="grid-container">
+            <div class="grid-item">
+                <h4>Algemene Termen & Dojo</h4>
+                <dl><dt>Arigato Gozaimashita</dt><dd>Dank u wel</dd><dt>Budo</dt><dd>De weg van de krijger</dd><dt>Bubishi</dt><dd>De 'bijbel' van karate</dd><dt>Dan</dt><dd>Graad (zwarte band)</dd><dt>Do</dt><dd>De weg, het pad</dd><dt>Dojo</dt><dd>Trainingsschool</dd><dt>Dojo Kun</dt><dd>Dojo regels</dd><dt>Gasshuku</dt><dd>Trainingskamp</dd><dt>Gi / Dogi</dt><dd>Karatepak</dd><dt>Honbu</dt><dd>Hoofdkwartier</dd><dt>Karate-ka</dt><dd>Beoefenaar van karate</dd><dt>Kohai</dt><dd>Junior student</dd><dt>Kyu</dt><dd>Graad (gekleurde band)</dd><dt>Mudansha</dt><dd>Zonder zwarte band</dd><dt>Obi</dt><dd>Band</dd><dt>Onegai Shimasu</dt><dd>Alstublieft, leer het mij</dd><dt>Reigi</dt><dd>Etiquette</dd><dt>Ryu</dt><dd>Stijl of school</dd><dt>Senpai</dt><dd>Senior student</dd><dt>Sensei</dt><dd>Leraar</dd><dt>Shihan</dt><dd>Grootmeester</dd><dt>Uchi Deshi</dt><dd>Interne student</dd><dt>Yudansha</dt><dd>Met zwarte band</dd></dl>
+            </div>
+            <div class="grid-item">
+                <h4>Commando's & Richtingen</h4>
+                <dl><dt>Ashi Kaete</dt><dd>Wissel van been</dd><dt>Gorei Nashi</dt><dd>Zonder tellen</dd><dt>Hajime</dt><dd>Begin</dd><dt>Hidari</dt><dd>Links</dd><dt>Kamae</dt><dd>Vechthouding</dd><dt>Mae</dt><dd>Voorwaarts</dd><dt>Mawatte</dt><dd>Draai om</dd><dt>Migi</dt><dd>Rechts</dd><dt>Mokuso</dt><dd>Meditatie</dd><dt>Moichido</dt><dd>Nog een keer</dd><dt>Seiza</dt><dd>Formele zit</dd><dt>Shugo</dt><dd>Opstellen</dd><dt>Ushiro</dt><dd>Achterwaarts</dd><dt>Yame</dt><dd>Stop</dd><dt>Yoi</dt><dd>Klaar</dd><dt>Yoko</dt><dd>Zijwaarts</dd></dl>
+            </div>
+            <div class="grid-item">
+                <h4>Technieken (Waza)</h4>
+                <dl><dt>Geri / Keri</dt><dd>Trap</dd><dt>Gyaku Waza</dt><dd>Greptechnieken</dd><dt>Hazushi Waza</dt><dd>Ontsnappingstechnieken</dd><dt>Kihon</dt><dd>Basistechniek</dd><dt>Nage Waza</dt><dd>Worptechnieken</dd><dt>Ne Waza</dt><dd>Grondtechnieken</dd><dt>Uchi</dt><dd>Slag</dd><dt>Uke</dt><dd>Blokkering</dd><dt>Waza</dt><dd>Techniek</dd><dt>Zuki / Tsuki</dt><dd>Stoot</dd></dl>
+            </div>
+            <div class="grid-item">
+                <h4>Concepten & Filosofie</h4>
+                <dl><dt>Bunkai</dt><dd>Toepassing van kata</dd><dt>Chin Kuchi Kakin</dt><dd>Spier/gewrichtsvergrendeling</dd><dt>Heijo Shin</dt><dd>Kalme geest</dd><dt>Irikumi</dt><dd>Korte afstand vechten</dd><dt>Kaishu / Heishu Gata</dt><dd>Open / gesloten hand kata</dd><dt>Kenpo Hakku</dt><dd>8 wetten van de vuist</dd><dt>Kiai</dt><dd>Krachtige schreeuw</dd><dt>Kime</dt><dd>Focus van kracht</dd><dt>Muchimi</dt><dd>"Kleverige" energie</dd><dt>Renzoku</dt><dd>Doorlopend</dd><dt>Sabaki</dt><dd>Lichaamsverplaatsing</dd><dt>Shime</dt><dd>Testen van Sanchin</dd><dt>Zanshin</dt><dd>Blijvende alertheid</dd></dl>
+            </div>
+        </div>
     </div>
+    
+    <footer>
+        <p>Gemaakt met ❤️ door Maik. Feedback of verbeteringen? Graag via <a href="https://github.com/Kaaz/goju-ryu" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+    </footer>
 
 </div>
 
 <script>
     function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
+        var i, tabcontent, tablinks, mobileSelect;
+        
         tabcontent = document.getElementsByClassName("tab-content");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
+        
         tablinks = document.getElementsByClassName("tab-button");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
+        
         document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
+        
+        for (i = 0; i < tablinks.length; i++) {
+            if (tablinks[i].getAttribute('onclick').includes("'" + tabName + "'")) {
+                tablinks[i].className += " active";
+                break;
+            }
+        }
+        
+        mobileSelect = document.getElementById("mobile-tabs");
+        mobileSelect.value = tabName;
+    }
+
+    function openTabFromSelect(selectElement) {
+        var tabName = selectElement.value;
+        openTab(null, tabName);
     }
 </script>
 
